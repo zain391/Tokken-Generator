@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+.footer{
+  position: fixed;
+  /* left: 100; */
+  right: 0px;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
