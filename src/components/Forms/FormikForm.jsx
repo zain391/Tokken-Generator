@@ -1,10 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import { Formik, ErrorMessage,Field, Form } from "formik";
 import {schema} from "../Forms/Schema"
 
 
 const FormikForm = () => {
- 
+  const userInfo=JSON.parse(localStorage.getItem("userInfo"));
+  const [data, setData]=useState([])
 
   return (
     <div>
@@ -25,6 +26,21 @@ const FormikForm = () => {
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
+          
+            let obj={
+          firstname:values.firstname,
+          lastname:values.lastname,
+          email:values.email,
+          password:values.password,
+          confirmpassword:values.confirmpassword,
+          streetaddress:values.streetaddress,
+          city:values.city,
+          region:values.region,
+          postalcode:values.postalcode,
+          
+          }
+          setData([...data,obj])
+          localStorage.setItem("userInfo",JSON.stringify(data))
           values.firstname=""
           values.lastname=""
           values.email=""
@@ -34,6 +50,7 @@ const FormikForm = () => {
           values.city=""
           values.region=""
           values.postalcode=""
+          console.log(data,"obj");
           setSubmitting(false);
         }, 400);
       }}
@@ -76,7 +93,8 @@ const FormikForm = () => {
                             autocomplete="given-name"
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
-                          <ErrorMessage name="firstname" component="div" />
+                          <ErrorMessage name="firstname"component="div" className="text-red-500" />
+                        <hr />
                         </div>
                         <div className="col-span-6 sm:col-span-3">
                           <label
@@ -93,9 +111,10 @@ const FormikForm = () => {
                             autocomplete="family-name"
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
-                          <ErrorMessage name="lastname" component="div" />
+                          <ErrorMessage name="lastname"component="div" className="text-red-500" />
+                        <hr />
                         </div>
-
+                        
                         <div className="col-span-6 sm:col-span-4">
                           <label
                             for="email-address"
@@ -111,7 +130,7 @@ const FormikForm = () => {
                             autocomplete="email"
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
-                          <ErrorMessage name="email" component="div" />
+                          <ErrorMessage name="email"component="div" className="text-red-500" />
                           
                         </div>
 
@@ -130,7 +149,7 @@ const FormikForm = () => {
                             autocomplete="email"
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
-                          <ErrorMessage name="password" component="div" />
+                          <ErrorMessage name="password"component="div" className="text-red-500" />
                           
                         </div>
 
@@ -149,7 +168,7 @@ const FormikForm = () => {
                             autocomplete="email"
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
-                          <ErrorMessage name="confirmpassword" component="div" />
+                          <ErrorMessage name="confirmpassword"component="div" className="text-red-500" />
                           
                         </div>
                         
@@ -168,7 +187,7 @@ const FormikForm = () => {
                             autocomplete="street-address"
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
-                          <ErrorMessage name="streetaddress" component="div" />
+                          <ErrorMessage name="streetaddress"component="div" className="text-red-500" />
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
@@ -186,7 +205,7 @@ const FormikForm = () => {
                             autocomplete="address-level2"
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
-                          <ErrorMessage name="city" component="div" />
+                          <ErrorMessage name="city"component="div" className="text-red-500"/>
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -204,7 +223,7 @@ const FormikForm = () => {
                             autocomplete="address-level1"
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
-                          <ErrorMessage name="region" component="div" />
+                          <ErrorMessage name="region"component="div" className="text-red-500" />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -223,7 +242,7 @@ const FormikForm = () => {
                             autocomplete="postal-code"
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
-                          <ErrorMessage name="postalcode" component="div" />
+                          <ErrorMessage name="postalcode"component="div" className="text-red-500" />
                         </div>
                       </div>
                     </div>
@@ -241,6 +260,7 @@ const FormikForm = () => {
               </div>
             </div>
           </div>
+
           <div className="hidden sm:block" aria-hidden="true">
             <div className="py-5">
               <div className="border-t border-gray-200"></div>
