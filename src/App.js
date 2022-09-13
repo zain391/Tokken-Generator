@@ -1,18 +1,19 @@
 import './App.css';
-import { BrowserRouter,Routes, Route } from 'react-router-dom';
-import ForkimForm from './components/Footer/FormikForm';
-import Form from './components/Footer/Forms';
+import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
+import ForkimForm from './components/Forms/FormikForm.jsx';
+import Form from './components/Forms/Forms';
 import Navbar from './components/Header/Navbar';
 function App() {
   return (
     <div className="App">
+      <Router>
       <Navbar/>
-      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Form />}></Route>
-          <Route path="/formik" element={<ForkimForm />} ></Route>
+        
+          <Route path="/" element={<ForkimForm/>} />
+          <Route path="/form" element={<Form/>} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
