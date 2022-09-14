@@ -43,11 +43,7 @@ export const FieldArraycom = () => (
                     Add a friend
                   </button>
                 )}
-                <div>
-
-                    
-                  <button type="submit">Submit</button>
-                </div>
+               
               </div>
             )}
           />
