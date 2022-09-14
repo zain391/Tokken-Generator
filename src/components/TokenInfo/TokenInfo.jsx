@@ -12,11 +12,7 @@ const TokenInfo = () => {
         initialValues={{
           tokenName: "",
           tokenSymbol: "",
-          allFunctionality: true,
-          Support: flag,
-          Supply: flag ? true : false,
-          Decimals: false,
-          Lock: false,
+         
         }}
         validationSchema={Schema}
         onSubmit={(values, { setSubmitting }) => {
@@ -41,8 +37,8 @@ const TokenInfo = () => {
           /* and other goodies */
         }) => (
           <>
+          <Form>
             <div class="mt-5 md:col-span-2 md:mt-0 w-5"></div>
-            <Form>
               <div class="overflow-hidden shadow sm:rounded-md ">
                 <div class="bg-white px-4 py-5 sm:p-4">
                   <div class="grid grid-cols-6 gap-6">
@@ -53,7 +49,6 @@ const TokenInfo = () => {
                       <Field
                         type="text"
                         name="tokenName"
-                        autocomplete="address-level2"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       />
                       <ErrorMessage
@@ -208,8 +203,7 @@ const TokenInfo = () => {
                 )}
               </pre>
               <pre>Supply{JSON.stringify(values.Supply)}</pre>
-
-              <div><div className="max-w-3xl mx-auto bg-white overflow-hidden shadow rounded-xl overflow-hidden"><div className="p-4 border-b border-gray-200"><div className="flex justify-between align-middle"><div><h3 className="text-gray-900 text-lg font-medium leading-6">Token Information</h3><p className="text-gray-500 text-sm">Basic details about your token.</p></div><div className="flex justify-center align-middle" /></div></div><div className="p-4"><div className="grid gap-4 grid-cols-2"><div className="col-span-2 md:col-span-1"><div><label htmlFor="token_name" className="block text-gray-700 text-sm font-medium">Token Name</label><input type="text" name="tokenName" placeholder className="text-black block mt-1 w-full focus:border-blue-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 sm:text-sm" autoComplete="off" defaultValue /><p className="mt-1 text-gray-500 text-sm">A name for your token.</p><p className="text-red-500 text-xs" /></div></div><div className="col-span-2 md:col-span-1"><div><label htmlFor="token_symbol" className="block text-gray-700 text-sm font-medium">Token Symbol</label><input type="text" name="tokenSymbol" placeholder className="text-black block mt-1 w-full focus:border-blue-500 border-gray-300 rounded-md shadow-sm uppercase focus:ring-blue-500 sm:text-sm" autoComplete="off" minLength={3} maxLength={9} defaultValue /><p className="mt-1 text-gray-500 text-sm">Symbol for your token, alphanumeric only.</p><p className="text-red-500 text-xs" /></div></div></div></div></div></div>
+              
             </Form>
           </>
         )}
