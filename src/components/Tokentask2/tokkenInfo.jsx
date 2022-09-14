@@ -106,7 +106,7 @@ const TokkenInfo = () => {
                 </div>
               </div>
             </div>
-            <TokkenFeature/>
+            
           </Form>
         )}
       </Formik>
