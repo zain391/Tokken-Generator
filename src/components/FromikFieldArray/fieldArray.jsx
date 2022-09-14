@@ -1,14 +1,12 @@
 import React from 'react'
 import { Formik, Form, Field, FieldArray } from 'formik';
  
-// Here is an example of a form with an editable list.
-// Next to each input are buttons for insert and remove.
-// If the list is empty, there is a button to add an item.
+
 export const FieldArraycom = () => (
   <div>
     <h1>Friend List</h1>
     <Formik
-      initialValues={{ friends: ['jared', 'ian', 'brent'] }}
+      initialValues={{ friends: ['jared'] }}
       onSubmit={values =>
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
@@ -16,14 +14,15 @@ export const FieldArraycom = () => (
       }
       render={({ values }) => (
         <Form>
+
           <FieldArray
             name="friends"
             render={arrayHelpers => (
-              <div>
+              <div style={{"border":"  2px solid red"}}>
                 {values.friends && values.friends.length > 0 ? (
                   values.friends.map((friend, index) => (
                     <div key={index}>
-                      <Field name={`friends.${index}`} />
+                      <Field name={`friends.${index}`} style={{"border":"  2px solid black"}}/>
                       <button
                         type="button"
                         onClick={() => arrayHelpers.remove(index)} // remove a friend from the list
@@ -45,6 +44,8 @@ export const FieldArraycom = () => (
                   </button>
                 )}
                 <div>
+
+                    
                   <button type="submit">Submit</button>
                 </div>
               </div>
