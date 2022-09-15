@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import { Schema } from "./schema/Schema";
 import MaterialUiDate from "../MaterialUiDate/MaterialUiDate";
 import MaterialUiRange from "../MaterialUiRange/MaterialUiRange";
+import TokkenModal from "../TokkenModal/TokkenModal";
 const TokkenTask2 = () => {
   return (
     <>
@@ -62,16 +63,7 @@ const TokkenTask2 = () => {
                   <div className="p-2 ">
                     <div className="flex justify-center">
                       <div className="iekbcc0 ju367va ju367v1n">
-                        <button
-                          className="connect_button mt-0"
-                          type="button"
-                          id="btn-connect"
-                          color="white"
-                        >
-                          <span className=" whitespace-nowrap  cursor-pointer focus:shadow-outline-blue inline-flex items-center justify-center px-3 py-2 w-full text-blue-700 text-sm font-medium leading-4 bg-blue-100 active:bg-blue-200 hover:bg-blue-50 border focus:border-blue-300 border-transparent rounded-md focus:outline-none transition duration-150 ease-in-out">
-                            Wallet Connect
-                          </span>
-                        </button>
+                        <TokkenModal/>
                         <>
                           <div className="p-4 border-b border-gray-200">
                             <div className="flex justify-between align-middle">
@@ -636,9 +628,10 @@ const TokkenTask2 = () => {
                                 <div className="flex col-span-2">
                                   <div className="flex-grow flex-shrink-0">
                                     <button
+                                    type="submit"
                                       className="focus:shadow-outline-blue inline-flex items-center justify-center px-3 py-2 w-full text-blue-700 text-sm cursor-pointer font-medium leading-4 bg-blue-100 active:bg-blue-200 hover:bg-blue-50 border focus:border-blue-300 border-transparent rounded-md focus:outline-none transition duration-150 ease-in-out disabled:opacity-50"
                                       aria-label="Login"
-                                    > 
+                                    > Deploy Token
                                       <svg
                                         stroke="currentColor"
                                         fill="currentColor"
@@ -656,12 +649,7 @@ const TokkenTask2 = () => {
                                         />
                                       </svg>
                                     </button>
-                                    <button
-                                      type="submit"
-                                      className="cursor-pointer disabled:opacity-70"
-                                    >
-                                      Deploy Token
-                                    </button>
+                                    
                                   </div>
                                 </div>
                               </div>
