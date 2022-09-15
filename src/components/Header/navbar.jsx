@@ -10,6 +10,9 @@ const Navbar = () => {
         <li>
           <Link to="/array">array</Link>
         </li>
+        {/* <li>
+          <Link to="/other">other</Link>
+        </li> */}
       </ul>
     </div>
   );
