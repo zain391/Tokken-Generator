@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import { Schema } from "./schema/Schema";
 import MaterialUiDate from "../MaterialUiDate/MaterialUiDate";
+import MaterialUiRange from "../MaterialUiRange/MaterialUiRange";
 const TokkenTask2 = () => {
   return (
     <>
@@ -414,60 +415,16 @@ const TokkenTask2 = () => {
                                                       className="MuiSlider-thumbColorSecondary MuiSlider-thumbSizeMedium MuiSlider-thumb css-by71oc"
                                                       style={{ left: "100%" }}
                                                     >
-                                                      <input
-                                                        aria-orientation="horizontal"
-                                                        aria-valuemax={18}
-                                                        aria-valuemin={6}
-                                                        name="decimalsValue"
-                                                        type="range"
-                                                        min={6}
-                                                        max={18}
-                                                        step={1}
-                                                        data-index={0}
-                                                        aria-label="Always visible"
-                                                        aria-valuenow={18}
-                                                        aria-valuetext="18°C"
-                                                        defaultValue={18}
-                                                        style={{
-                                                          border: "0px",
-                                                          clip: "rect(0px, 0px, 0px, 0px)",
-                                                          height: "100%",
-                                                          margin: "-1px",
-                                                          overflow: "hidden",
-                                                          padding: "0px",
-                                                          position: "absolute",
-                                                          whiteSpace: "nowrap",
-                                                          width: "100%",
-                                                          direction: "ltr",
-                                                        }}
-                                                      />
-                                                      <span
-                                                        className="MuiSlider-valueLabelOpen MuiSlider-valueLabel css-zuq5ux"
-                                                        aria-hidden="true"
-                                                      >
-                                                        <span className="MuiSlider-valueLabelCircle">
-                                                          <span className="MuiSlider-valueLabelLabel">
-                                                            18
-                                                          </span>
-                                                        </span>
-                                                      </span>
+                                                      <MaterialUiRange/>
+                                                      
                                                     </span>
                                                   </span>
                                                 </div>
                                               </div>
-                                              <div className="ak b6 b2 ai aj b7">
-                                                <div className="b8 b9 ba bb bc">
-                                                  6
-                                                </div>
-                                                <div className="b8 b9 ba bb bc">
-                                                  18
-                                                </div>
-                                              </div>
+                                              
                                             </div>
                                           </div>
-                                          <div className="grid items-center justify-center w-8 h-8">
-                                            10
-                                          </div>
+                                          
                                         </div>
                                         <p className="mt-1 text-gray-500 text-sm">
                                           The decimal units for your token. If
