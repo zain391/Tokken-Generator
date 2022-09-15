@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
-// import { Schema } from "./schema/Schema";
+import { Schema } from "./schema/Schema";
+import MaterialUiDate from "../MaterialUiDate/MaterialUiDate";
 const TokkenTask2 = () => {
   return (
     <>
@@ -11,7 +12,7 @@ const TokkenTask2 = () => {
           utc: [
             {
               unlockTime: "",
-              vesting: "",
+              vesting: 0,
             },
           ],
           tokenName: "",
@@ -21,8 +22,10 @@ const TokkenTask2 = () => {
           unlimitedSupply: false,
           decimals: false,
           vestingLock: false,
+          initialSupply:0,
+          initialVesting:0,
         }}
-        // validationSchema={Schema}
+        validationSchema={Schema}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
@@ -41,7 +44,6 @@ const TokkenTask2 = () => {
           /* and other goodies */
         }) => (
           <Form className="text-center">
-            {/* <h1>{`utc.[${0}].unlockTime`}</h1> */}
             <div className="grid gap-4 grid-cols-1 mt-4">
               <div className="px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
                 <div className="text-center">
@@ -134,7 +136,7 @@ const TokkenTask2 = () => {
                                   </p>
                                   <p className="text-red-500 text-xs">
                                     <ErrorMessage
-                                      name="tokenName"
+                                      name="tokenSymbol"
                                       component="div"
                                     />
                                   </p>
@@ -318,12 +320,18 @@ const TokkenTask2 = () => {
                                     >
                                       Initial Supply
                                     </label>
-                                    <input
+                                    <Field
                                       type="number"
                                       name="initialSupply"
                                       className="block mt-1 w-full text-black focus:border-blue-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 sm:text-sm "
                                       defaultValue={0}
                                     />
+                                    <p className="text-red-500 text-xs">
+                                    <ErrorMessage
+                                      name="initialSupply"
+                                      component="div"
+                                    />
+                                  </p>
                                     <p className="mt-1 text-gray-500 text-sm">
                                       Starting number of supply of your token,
                                       will be placed in your wallet.
@@ -490,8 +498,11 @@ const TokkenTask2 = () => {
                                       <input
                                         type="number"
                                         name="initialVesting"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.initialVesting}
                                         className="block mt-1 w-full text-black focus:border-blue-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 sm:text-sm "
-                                        max={100}
+                                        max="100"
                                         defaultValue={0}
                                       />
                                       <p className="text-black font-bold  absolute left-12 top-[20%]">
@@ -533,13 +544,7 @@ const TokkenTask2 = () => {
                                                             <div>
                                                               <div className="MuiBox-root css-1nmwe9g">
                                                                 {/* {setutc(index)} */}
-                                                                <Field
-                                                                  name={`utc.[${index}].unlockTime`}
-                                                                  placeholder="mm/dd/yyyy hh:mm (a|p)m"
-                                                                  type="tel"
-                                                                  className="text-black block mt-1 w-full focus:border-blue-500 border-gray-300 rounded-md shadow-sm uppercase focus:ring-blue-500 sm:text-sm"
-                                                                  defaultValue
-                                                                />
+                                                                <MaterialUiDate/>
                                                                 <div className="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1nvf7g0">
                                                                   <button
                                                                     className="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1psvnyp"
@@ -572,7 +577,10 @@ const TokkenTask2 = () => {
                                                                 </label>
                                                                 <div className="flex items-center">
                                                                   <div className="relative w-full">
-                                                                    <Field
+                                                                    <input
+                                                                    onChange={handleChange}
+                                                                    onBlur={handleBlur}
+                                                                    value={values.utc.vesting}
                                                                       name={`utc.[${index}].vesting`}
                                                                       type="number"
                                                                       placeholder="Vesting"
@@ -596,6 +604,7 @@ const TokkenTask2 = () => {
                                                                     🗑
                                                                   </button>
                                                                 </div>
+                                                                
                                                               </div>
                                                             </div>
                                                           </div>
@@ -607,7 +616,7 @@ const TokkenTask2 = () => {
                                               : null
                                             // here we have ended map the array
                                           }
-
+                                            
                                           <div className="flex justify-center">
                                             <div className="bg-blue-500 text-center border rounded-md p-2 font-bold mt-4 hover:scale-105">
                                               <button
@@ -628,12 +637,15 @@ const TokkenTask2 = () => {
                                       // render function ends here
                                     />
                                     {/* Field array will end here here  */}
-                                    <p className="text-red-500 text-xs pt-2">
-                                      The Sum of TGE and Vestings should be
-                                      equal to 100%
-                                      <br />
-                                      Currently it is bellow than 100%
-                                    </p>
+                                    {
+                                                                    (values.initialVesting+values.utc[0].vesting !== 100) ?(
+                                                                      <p className="text-red-500 text-xs pt-2">The Sum of TGE and Vestings should be equal to
+                                                                      100%</p>):
+                                                                      (null)
+                                                                    
+                                                                    
+
+                                                                  }
                                   </div>
                                 </div>
                               ) : (
