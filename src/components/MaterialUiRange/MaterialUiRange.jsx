@@ -8,7 +8,7 @@ function valuetext(value) {
 
 export default function MaterialUiRange() {
   return (
-    <Box sx={{ width: 500 }}>
+    <Box sx={{ width: 700 }}>
       <Slider
       style={{"color":"#8e44ad"}}
         aria-label="Temperature"

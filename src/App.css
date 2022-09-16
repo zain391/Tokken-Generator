@@ -13,6 +13,11 @@
   height: 3.5rem !important;
   border: none;
 }
+.decimal{
+  /* "position":"absolute",
+  "color": red,
+  "right": "500px", */
+}
 .unlocktime{
   width: 260px;
 }
