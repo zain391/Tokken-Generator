@@ -10,6 +10,12 @@
 h3{
   color:red
 }
+.token{
+  margin-right: 600px;
+}
+.token-sub{
+  margin-right: 475px;
+}
 .custom{
   background-color: #f2f8fb;
 }

@@ -8,7 +8,6 @@ export const Schema = Yup.object().shape({
     .required()
     .max(9)
     .required("The token symbol field is required"),
-  initialSupply: Yup.number().min(1).required("must enter the number "),
   initialVesting: Yup.number().min(0).max(99),
 
   utc:Yup.array(),
@@ -17,7 +16,9 @@ export const Schema = Yup.object().shape({
   unlimitedSupply: Yup.boolean(),
   decimals: Yup.boolean(),
   vestingLock: Yup.boolean(),
-  initialSupply: Yup.number(),
-  maximumSupply: Yup.number(),
+  initialSupply: Yup.number().min(1).required("The token initial supply field is required"),
+  maximumSupply: Yup.number().min(1).required("The Maximum Supply should be equla or greater than  initial supply "),
   initialVesting: Yup.number(),
+  decimals:Yup.number(),
+  date_Time:Yup.date(),
 });

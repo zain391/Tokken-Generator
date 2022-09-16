@@ -9,6 +9,7 @@ import TokenInformation from "../TokenInformation/TokenInformation";
 import TokenSupply from "../TokenSupply/TokenSupply";
 import TokenDeployButton from "../TokenDeployButton/TokenDeployButton";
 import { Schema } from "../Tokentask2/schema/Schema";
+import TokenTge from "../TokenTge/TokenTge";
 const TokkenTask2 = () => (
   <>
     <Formik
@@ -23,11 +24,13 @@ const TokkenTask2 = () => (
       allFunctionality: true,
       mintingBurningsupport: false,
       unlimitedSupply: false,
-      decimals: false,
+      Customdecimals: false,
       vestingLock: false,
       initialSupply: 0,
       maximumSupply: 0,
       initialVesting: 0,
+      decimals:18,
+      date_Time:"",
     }}
     validationSchema={Schema}
       onSubmit={(values) =>
@@ -65,204 +68,12 @@ const TokkenTask2 = () => (
                   <ConnectWallet />
                   <TokenInformation value={values.tokenName}/>
 
-                  <TokenFeature change={handleChange} blur={handleBlur} mintingBurningsupport={values.mintingBurningsupport} unlimitedSupply={values.unlimitedSupply}/>
-                  <TokenSupply />
-                  <TokenDecimal />
-                  <div className="max-w-3xl w-full mx-auto bg-white overflow-hidden shadow rounded-xl overflow-hidden p-3">
-                    <div>
-                      <label
-                        htmlFor="supply_initial"
-                        className="block text-gray-700 text-sm font-medium"
-                      >
-                        TGE
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="number"
-                          name="initialVesting"
-                          className="block mt-1 w-full text-black focus:border-blue-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 sm:text-sm "
-                          max={100}
-                          defaultValue={0}
-                        />
-                        <p className="text-black font-bold  absolute left-12 top-[20%]">
-                          %
-                        </p>
-                      </div>
-                      <p className="mt-1 text-gray-500 text-sm">
-                        Percentage of tokens which will be unlocked by the time
-                        of creation.
-                      </p>
-                      <p className="text-red-500 text-xs" />
-                    </div>
-                    <div className>
-                      <div className="   ">
-                        <div className="md:mr-3  whitespace-nowrap  items-center md:space-x-3  MuiBox-root css-1k88e4i">
-                          <div className="w-full mt-2">
-                            <div className="w-full">
-                              <label
-                                htmlFor="time"
-                                className="block text-gray-700 text-sm font-medium"
-                              >
-                                Unlock Time
-                              </label>
-                              <div className="relative">
-                                <div className="css-ovnx7g">
-                                  <div>
-                                    <div className="MuiBox-root css-1nmwe9g">
-                                      <input
-                                        name="vestings.0.time"
-                                        placeholder="mm/dd/yyyy hh:mm (a|p)m"
-                                        type="tel"
-                                        className="text-black block mt-1 w-full focus:border-blue-500 border-gray-300 rounded-md shadow-sm uppercase focus:ring-blue-500 sm:text-sm"
-                                        defaultValue
-                                      />
-                                      <div className="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1nvf7g0">
-                                        <button
-                                          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1psvnyp"
-                                          tabIndex={0}
-                                          type="button"
-                                          aria-label="Choose date"
-                                        >
-                                          <svg
-                                            className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197"
-                                            focusable="false"
-                                            aria-hidden="true"
-                                            viewBox="0 0 24 24"
-                                            data-testid="CalendarIcon"
-                                          >
-                                            <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" />
-                                          </svg>
-                                          <span className="MuiTouchRipple-root css-w0pj6f" />
-                                        </button>
-                                      </div>
-                                      <p className="text-black font-bold ml-2">
-                                        UTC
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="w-full md:mr-3  mt-2  ">
-                            <div className>
-                              <label
-                                htmlFor="vesting"
-                                className="block text-gray-700 text-sm font-medium"
-                              >
-                                Vesting
-                              </label>
-                              <div className="flex items-center">
-                                <div className="relative w-full">
-                                  <input
-                                    name="vestings.0.vesting"
-                                    type="number"
-                                    placeholder="Vesting"
-                                    className="text-black block mt-1 w-full focus:border-blue-500 border-gray-300 rounded-md shadow-sm uppercase focus:ring-blue-500 sm:text-sm"
-                                    defaultValue={0}
-                                  />
-                                  <p className="text-black font-bold  absolute left-12 top-[25%]">
-                                    %
-                                  </p>
-                                </div>
-                                <p className="text-red-600 cursor-pointer ml-2">
-                                  🗑
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="   ">
-                        <div className="md:mr-3  whitespace-nowrap  items-center md:space-x-3  MuiBox-root css-1k88e4i">
-                          <div className="w-full mt-2">
-                            <div className="w-full">
-                              <label
-                                htmlFor="time"
-                                className="block text-gray-700 text-sm font-medium"
-                              >
-                                Unlock Time
-                              </label>
-                              <div className="relative">
-                                <div className="css-ovnx7g">
-                                  <div>
-                                    <div className="MuiBox-root css-1nmwe9g">
-                                      <input
-                                        name="vestings.1.time"
-                                        placeholder="mm/dd/yyyy hh:mm (a|p)m"
-                                        type="tel"
-                                        className="text-black block mt-1 w-full focus:border-blue-500 border-gray-300 rounded-md shadow-sm uppercase focus:ring-blue-500 sm:text-sm"
-                                        defaultValue
-                                      />
-                                      <div className="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1nvf7g0">
-                                        <button
-                                          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1psvnyp"
-                                          tabIndex={0}
-                                          type="button"
-                                          aria-label="Choose date"
-                                        >
-                                          <svg
-                                            className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197"
-                                            focusable="false"
-                                            aria-hidden="true"
-                                            viewBox="0 0 24 24"
-                                            data-testid="CalendarIcon"
-                                          >
-                                            <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" />
-                                          </svg>
-                                          <span className="MuiTouchRipple-root css-w0pj6f" />
-                                        </button>
-                                      </div>
-                                      <p className="text-black font-bold ml-2">
-                                        UTC
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="w-full md:mr-3  mt-2  ">
-                            <div className>
-                              <label
-                                htmlFor="vesting"
-                                className="block text-gray-700 text-sm font-medium"
-                              >
-                                Vesting
-                              </label>
-                              <div className="flex items-center">
-                                <div className="relative w-full">
-                                  <input
-                                    name="vestings.1.vesting"
-                                    type="number"
-                                    placeholder="Vesting"
-                                    className="text-black block mt-1 w-full focus:border-blue-500 border-gray-300 rounded-md shadow-sm uppercase focus:ring-blue-500 sm:text-sm"
-                                    defaultValue
-                                  />
-                                  <p className="text-black font-bold  absolute left-12 top-[25%]">
-                                    %
-                                  </p>
-                                </div>
-                                <p className="text-red-600 cursor-pointer ml-2">
-                                  🗑
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <p className="text-red-500 text-xs pt-2">
-                        The Sum of TGE and Vestings should be equal to 100%
-                        <br />
-                        Currently it is bellow than 100%
-                      </p>
-                      <div className="flex justify-center">
-                        <div className="bg-blue-500 text-center border rounded-md p-2 font-bold mt-4 hover:scale-105">
-                          <button type="button">Add Vesting</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <TokenFeature change={handleChange} blur={handleBlur} mintingBurningsupport={values.mintingBurningsupport} unlimitedSupply={values.unlimitedSupply } decimals={values.decimals} Customdecimals={values.Customdecimals}/>
+
+                  <TokenSupply mintingBurningsupport={values.mintingBurningsupport} maximumSupply={values.maximumSupply} initialSupply={values.initialSupply}/>
+
+                  <TokenDecimal  Customdecimals={values.Customdecimals} decimals={values.decimals} change={handleChange} blur={handleBlur}/>
+                  <TokenTge vestingLock={values.vestingLock} change={handleChange} blur={handleBlur}  date_Time={values.date_Time}/>
                   <TokenDeployButton/>
                 </div>
               </form>

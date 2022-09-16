@@ -6,7 +6,7 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-export default function MaterialUiRange() {
+export default function MaterialUiRange({decimals,change,blur}) {
   return (
     <Box sx={{ width: 700 }}>
       <Slider
@@ -19,6 +19,10 @@ export default function MaterialUiRange() {
         marks
         min={6}
         max={18}
+        name="decimals"
+        value={decimals}
+        onChange={change}
+        onBlur={blur}
       />
     </Box>
   );

@@ -1,10 +1,11 @@
 import React from 'react'
 import MaterialUiRange from '../MaterialUiRange/MaterialUiRange'
 
-function TokenDecimal() {
+function TokenDecimal({Customdecimals,change ,blur,decimals}) {
   return (
     <>
-       <div>
+       {Customdecimals ?(
+          <div>
               <div className="max-w-3xl mx-auto bg-white overflow-hidden shadow rounded-xl overflow-hidden">
                 <div className="p-4 border-b border-gray-200">
                   <div className="flex ">
@@ -12,14 +13,14 @@ function TokenDecimal() {
                     <h3 className="text-gray-900 text-lg font-medium " style={{ position: "absolute", left: "320px" }}>
                       Decimals 
                       <span className="text-gray-400 text-xs pb-8" style={{ position: "absolute", 
-                       top:"20px",right:"-155px", width:"250px" }}>
+                       top:"25px",right:"-154px", width:"250px" }}>
                     Configure the decimals in your token
                   </span>
                     </h3>
                      
                     <div className="flex justify-center align-middle" />
                   </div>
-                  
+                  <br />
                 </div>
                 <div className="p-2">
                   <div className="grid gap-1 grid-cols-2">
@@ -32,9 +33,9 @@ function TokenDecimal() {
                           Decimals
                         </label>
                         <div className="flex gap-2 mt-1">
+                              <MaterialUiRange decimals={decimals} change={change} blur={blur}/>
                           <div className="flex-grow ">
                             <div data-baseweb="slider" className="ae af">
-                              <MaterialUiRange/>
                             </div>
                           </div>
                         </div>
@@ -48,6 +49,9 @@ function TokenDecimal() {
                 </div>
               </div>
             </div> 
+        ):
+        <></>
+       }
     </>
   )
 }
