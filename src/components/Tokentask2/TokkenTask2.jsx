@@ -65,7 +65,6 @@ const TokkenTask2 = () => {
                     <div className="flex justify-center">
                       <div className="iekbcc0 ju367va ju367v1n">
                         <TokkenModal />
-                        <br />
                         <>
                           <div className="p-4 border-b border-gray-200 shadow-sm  rounded-xl overflow-hidden shadow-sm custom" style={{"background-color":"white"}}>
                             <div className="flex justify-between align-middle">
