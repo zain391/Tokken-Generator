@@ -4,7 +4,11 @@
   padding: 0;
   box-sizing: border-box;
   text-align: center;
+  background-color: rgb(270, 253, 253);
   
+}
+h3{
+  color:red
 }
 .custom{
   background-color: #f2f8fb;

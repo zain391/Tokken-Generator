@@ -3,22 +3,33 @@ import React from "react";
 function TokenSupply() {
   return (
     <>
-      <div>
+      <div class="flex ...">
+      <div class="max-w-3xl w-full mx-auto bg-white overflow-hidden shadow rounded-xl overflow-hidden p-3">
+        <h3 className="">Token Supply</h3>
+        <p className="text-gray-400 text-xs pb-8">Let's set the supply options for your token
+         </p>
+      </div>
+      
+      </div>
+      {/* <div>
         <div className="max-w-3xl mx-auto bg-white overflow-hidden shadow rounded-xl overflow-hidden">
-          
-        <div className="flex ">
-                    <br />
-                    <h3 className="text-gray-900 text-lg font-medium " style={{ position: "absolute", left: "320px" }}>
-                    Token Supply
-                      <span className="text-gray-400 text-xs pb-8" style={{ position: "absolute", 
-                       top:"24px",right:"-135px", width:"250px" }}>
-                    Let's set the supply options for your token
-                  </span>
-                    </h3>
-                     
-                    <div className="flex justify-center align-middle" />
-                  </div>
-          
+          <div className="flex ">
+            <br />
+            <h3
+              className="text-gray-900 text-lg font-medium "
+              style={{ position: "absolute", left: "320px" }}
+            >
+              Token Supply
+              <span
+                className="text-gray-400 text-xs pb-8"
+              >
+                Let's set the supply options for your token
+              </span>
+            </h3>
+
+            <div className="flex justify-center align-middle" />
+          </div>
+
           <div className="p-4">
             <div className="grid gap-4 grid-cols-2">
               <div className="col-span-2">
@@ -46,6 +57,7 @@ function TokenSupply() {
           </div>
         </div>
       </div>
+ */}
     </>
   );
 }

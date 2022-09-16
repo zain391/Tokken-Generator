@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Field ,ErrorMessage} from 'formik';
 function TokenInformation() {
   return (
     <>
@@ -28,7 +28,7 @@ function TokenInformation() {
                   >
                     Token Name
                   </label>
-                  <input
+                  <Field
                     type="text"
                     name="tokenName"
                     placeholder
@@ -39,6 +39,12 @@ function TokenInformation() {
                   <p className="mt-1 text-gray-500 text-sm">
                     A name for your token.
                   </p>
+                  <p className="text-red-500 text-xs">
+                                    <ErrorMessage
+                                      name="tokenName"
+                                      component="div"
+                                    />
+                                  </p>
                   <p className="text-red-500 text-xs" />
                 </div>
               </div>
@@ -50,7 +56,7 @@ function TokenInformation() {
                   >
                     Token Symbol
                   </label>
-                  <input
+                  <Field
                     type="text"
                     name="tokenSymbol"
                     placeholder
@@ -58,11 +64,16 @@ function TokenInformation() {
                     autoComplete="off"
                     minLength={3}
                     maxLength={9}
-                    defaultValue
                   />
                   <p className="mt-1 text-gray-500 text-sm">
                     Symbol for your token, alphanumeric only.
                   </p>
+                  <p className="text-red-500 text-xs">
+                                    <ErrorMessage
+                                      name="tokenSymbol"
+                                      component="div"
+                                    />
+                                  </p>
                   <p className="text-red-500 text-xs" />
                 </div>
               </div>
