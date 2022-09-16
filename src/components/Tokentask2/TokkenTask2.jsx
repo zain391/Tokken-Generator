@@ -24,8 +24,9 @@ const TokkenTask2 = () => {
           unlimitedSupply: false,
           decimals: false,
           vestingLock: false,
-          initialSupply:0,
-          initialVesting:0,
+          initialSupply: 0,
+          maximumSupply: 0,
+          initialVesting: 0,
         }}
         validationSchema={Schema}
         onSubmit={(values, { setSubmitting }) => {
@@ -48,24 +49,25 @@ const TokkenTask2 = () => {
           <Form className="text-center">
             <div className="grid gap-4 grid-cols-1 mt-4">
               <div className="px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
-                <div className="text-center">
-                  <h1 className="text-black text-3xl font-extrabold leading-5 sm:text-4xl lg:text-5xl lg:leading-none">
+                <div className="text-center" >
+                  <h1 className="text-black text-3xl shadow-sm font-extrabold leading-5 sm:text-4xl lg:text-5xl lg:leading-none">
                     Token Builder
                   </h1>
-                  <p className="mt-3 mx-auto max-w-4xl text-gray-600 text-xl leading-7 sm:mt-5 sm:text-2xl sm:leading-8">
+                  <p className="mt-3 mx-auto  max-w-4xl text-gray-600 text-xl leading-7 sm:mt-5 sm:text-2xl sm:leading-8">
                     Easily deploy Smart Contracts for any Token right from your
                     browser.
                   </p>
                 </div>
               </div>
               <div>
-                <div className="max-w-3xl mx-auto bg-white overflow-hidden shadow rounded-xl overflow-hidden">
+                <div className="max-w-3xl mx-auto bg-white overflow-hidden shadow rounded-xl overflow-hidden shadow-sm custom">
                   <div className="p-2 ">
                     <div className="flex justify-center">
                       <div className="iekbcc0 ju367va ju367v1n">
-                        <TokkenModal/>
+                        <TokkenModal />
+                        <br />
                         <>
-                          <div className="p-4 border-b border-gray-200">
+                          <div className="p-4 border-b border-gray-200 shadow-sm  rounded-xl overflow-hidden shadow-sm custom" style={{"background-color":"white"}}>
                             <div className="flex justify-between align-middle">
                               <div>
                                 <h3 className="text-gray-900 text-lg font-medium leading-6">
@@ -79,8 +81,8 @@ const TokkenTask2 = () => {
                             </div>
                           </div>
 
-                          <div className="p-4">
-                            <div className="grid gap-4 grid-cols-2">
+                          <div className="p-4 shadow  rounded-xl overflow-hidden shadow-sm custom" style={{"background-color":"white"}}>
+                            <div className="grid gap-4 grid-cols-2 ">
                               <div className="col-span-2 md:col-span-1">
                                 <div>
                                   <label
@@ -93,7 +95,7 @@ const TokkenTask2 = () => {
                                     type="text"
                                     name="tokenName"
                                     placeholder
-                                    className="text-black block mt-1 w-full focus:border-blue-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 sm:text-sm"
+                                    className="text-black block mt-1 w-full focus:border-blue-500 border-gray-300 rounded-md  focus:ring-blue-500 sm:text-sm"
                                     autoComplete="off"
                                   />
                                   <p className="mt-1 text-gray-500 text-sm">
@@ -139,8 +141,9 @@ const TokkenTask2 = () => {
                           </div>
                           {/* --------------------------------------------------------------------------------------- */}
                           {/* <pre>{JSON.stringify(values.allFunctionality)}</pre> */}
+                          <br />
                           <>
-                            <div>
+                            <div className=" rounded-xl overflow-hidden shadow-sm custom "style={{"background-color":"white"}}>
                               <div className="p-4 border-b border-gray-200">
                                 <div className="flex justify-between align-middle">
                                   <div>
@@ -284,7 +287,6 @@ const TokkenTask2 = () => {
                                 </div>
                               </div>
                             </div>
-                            
                           </>
 
                           {/* --------------------------------------------------------------------------------------- */}
@@ -320,11 +322,11 @@ const TokkenTask2 = () => {
                                       defaultValue={0}
                                     />
                                     <p className="text-red-500 text-xs">
-                                    <ErrorMessage
-                                      name="initialSupply"
-                                      component="div"
-                                    />
-                                  </p>
+                                      <ErrorMessage
+                                        name="initialSupply"
+                                        component="div"
+                                      />
+                                    </p>
                                     <p className="mt-1 text-gray-500 text-sm">
                                       Starting number of supply of your token,
                                       will be placed in your wallet.
@@ -343,13 +345,20 @@ const TokkenTask2 = () => {
                                         type="number"
                                         className="block mt-1 w-full text-black focus:border-blue-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 sm:text-sm "
                                         name="maximumSupply"
-                                        defaultValue={0}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.maximumSupply}
                                       />
                                       <p className="mt-1 text-gray-500 text-sm">
                                         Maximum number of supply of your token,
                                         will be placed in your wallet.
                                       </p>
                                       <p className="text-red-500 text-xs" />
+                                      {(values.maximumSupply >= values.initialSupply) ? (
+                                        null
+                                      ) : <p className="text-red-500 text-xs pt-2">
+                                        maximumSupply must be greater than or equal to {values.initialSupply}
+                                      </p>}
                                     </div>
                                   ) : (
                                     <></>
@@ -407,16 +416,13 @@ const TokkenTask2 = () => {
                                                       className="MuiSlider-thumbColorSecondary MuiSlider-thumbSizeMedium MuiSlider-thumb css-by71oc"
                                                       style={{ left: "100%" }}
                                                     >
-                                                      <MaterialUiRange/>
-                                                      
+                                                      <MaterialUiRange />
                                                     </span>
                                                   </span>
                                                 </div>
                                               </div>
-                                              
                                             </div>
                                           </div>
-                                          
                                         </div>
                                         <p className="mt-1 text-gray-500 text-sm">
                                           The decimal units for your token. If
@@ -478,94 +484,72 @@ const TokkenTask2 = () => {
                                           {
                                             values.utc && values.utc.length > 0
                                               ? // here we will map the array
-                                                values.utc.map(
-                                                  (utcitems, index) => (
-                                                    <div className="w-full mt-2">
-                                                      <div className="w-full">
-                                                        <label
-                                                          htmlFor="time"
-                                                          className="block text-gray-700 text-sm font-medium"
-                                                        >
-                                                          Unlock Time
-                                                        </label>
-                                                        <div className="relative">
-                                                          <div className="css-ovnx7g">
-                                                            <div>
-                                                              <div className="MuiBox-root css-1nmwe9g">
-                                                                {/* {setutc(index)} */}
-                                                                <MaterialUiDate/>
-                                                                <div className="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1nvf7g0">
-                                                                  <button
-                                                                    className="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1psvnyp"
-                                                                    tabIndex={0}
-                                                                    type="button"
-                                                                    aria-label="Choose date"
-                                                                  >
-                                                                    <svg
-                                                                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197"
-                                                                      focusable="false"
-                                                                      aria-hidden="true"
-                                                                      viewBox="0 0 24 24"
-                                                                      data-testid="CalendarIcon"
-                                                                    >
-                                                                      <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" />
-                                                                    </svg>
-                                                                    <span className="MuiTouchRipple-root css-w0pj6f" />
-                                                                  </button>
-                                                                </div>
-                                                                <p className="text-black font-bold ml-2">
-                                                                  UTC
-                                                                </p>
-                                                              </div>
-                                                              <div className>
-                                                                <label
-                                                                  htmlFor="vesting"
-                                                                  className="block text-gray-700 text-sm font-medium"
+                                              values.utc.map(
+                                                (utcitems, index) => (
+                                                  <div className="w-full mt-2">
+                                                    <div className="w-full unlocktime">
+                                                      <label
+                                                        htmlFor="time"
+                                                        className="block text-gray-700 text-sm font-medium mb-2"
+                                                      >
+                                                        Unlock Time
+                                                      </label>
+                                                      <div className="relative">
+                                                        <div className="css-ovnx7g">
+                                                          <div>
+                                                            <div className="MuiBox-root css-1nmwe9g">
+                                                              <MaterialUiDate />
+                                                              {/* <div className="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1nvf7g0">
+
+                                                                <button
+                                                                  className="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1psvnyp"
+                                                                  tabIndex={0}
+                                                                  type="button"
+                                                                  aria-label="Choose date"
                                                                 >
-                                                                  Vesting
-                                                                </label>
-                                                                <div className="flex items-center">
-                                                                  <div className="relative w-full">
-                                                                    <input
-                                                                    onChange={handleChange}
-                                                                    onBlur={handleBlur}
-                                                                    value={values.utc.vesting}
-                                                                      name={`utc.[${index}].vesting`}
-                                                                      type="number"
-                                                                      placeholder="Vesting"
-                                                                      className="text-black block mt-1 w-full focus:border-blue-500 border-gray-300 rounded-md shadow-sm uppercase focus:ring-blue-500 sm:text-sm"
-                                                                      defaultValue={
-                                                                        0
-                                                                      }
-                                                                    />
-                                                                    <p className="text-black font-bold  absolute left-12 top-[25%]">
-                                                                      %
-                                                                    </p>
-                                                                  </div>
-                                                                  <button
-                                                                    className="text-red-600 cursor-pointer ml-2"
-                                                                    onClick={() =>
-                                                                      arrayHelpers.remove(
-                                                                        index
-                                                                      )
-                                                                    }
+                                                                  <svg
+                                                                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197"
+                                                                    focusable="false"
+                                                                    aria-hidden="true"
+                                                                    viewBox="0 0 24 24"
+                                                                    data-testid="CalendarIcon"
                                                                   >
-                                                                    🗑
-                                                                  </button>
-                                                                </div>
-                                                                
+                                                                    <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" />
+                                                                  </svg>
+                                                                  <span className="MuiTouchRipple-root css-w0pj6f" />
+                                                                </button>
+
+                                                              </div> */}
+                                                            </div>
+
+
+                                                            <div className>
+
+                                                              <div className="" style={{"position":"absolute" , "top":"30px", "left":"530px"}}>
+
+                                                                <button
+                                                                  className="text-red-600 cursor-pointer "
+                                                                  onClick={() =>
+                                                                    arrayHelpers.remove(
+                                                                      index
+                                                                    )
+                                                                  }
+                                                                >
+                                                                  🗑
+                                                                </button>
                                                               </div>
                                                             </div>
                                                           </div>
                                                         </div>
                                                       </div>
                                                     </div>
-                                                  )
+                                                  </div>
                                                 )
-                                              : null
+                                              )
+                                              : <></>
                                             // here we have ended map the array
                                           }
-                                            
+
                                           <div className="flex justify-center">
                                             <div className="bg-blue-500 text-center border rounded-md p-2 font-bold mt-4 hover:scale-105">
                                               <button
@@ -583,18 +567,17 @@ const TokkenTask2 = () => {
                                           </div>
                                         </div>
                                       )}
-                                      // render function ends here
+                                    // render function ends here
                                     />
                                     {/* Field array will end here here  */}
-                                    {
-                                                                    (values.initialVesting+values.utc[0].vesting !== 100) ?(
-                                                                      <p className="text-red-500 text-xs pt-2">The Sum of TGE and Vestings should be equal to
-                                                                      100%</p>):
-                                                                      (null)
-                                                                    
-                                                                    
-
-                                                                  }
+                                    {values.initialVesting +
+                                      values.utc[0].vesting !==
+                                      100 ? (
+                                      <p className="text-red-500 text-xs pt-2">
+                                        The Sum of TGE and Vestings should be
+                                        equal to 100%
+                                      </p>
+                                    ) : null}
                                   </div>
                                 </div>
                               ) : (
@@ -626,35 +609,35 @@ const TokkenTask2 = () => {
                                   </span>
                                 </div>
                                 <div className="flex col-span-2">
-                                  <div className="flex-grow flex-shrink-0">
-                                    <button
-                                    type="submit"
-                                      className="focus:shadow-outline-blue inline-flex items-center justify-center px-3 py-2 w-full text-blue-700 text-sm cursor-pointer font-medium leading-4 bg-blue-100 active:bg-blue-200 hover:bg-blue-50 border focus:border-blue-300 border-transparent rounded-md focus:outline-none transition duration-150 ease-in-out disabled:opacity-50"
-                                      aria-label="Login"
-                                    > Deploy Token
-                                      <svg
-                                        stroke="currentColor"
-                                        fill="currentColor"
-                                        strokeWidth={0}
-                                        viewBox="0 0 16 16"
-                                        className="mr-2 w-6 h-6"
-                                        height="1em"
-                                        width="1em"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                      >
-                                        <path
-                                          fillRule="evenodd"
-                                          clipRule="evenodd"
-                                          d="M14.491 1c-3.598.004-6.654 1.983-8.835 4H1.5l-.5.5v3l.147.354.991.991.001.009 4 4 .009.001.999.999L7.5 15h3l.5-.5v-4.154c2.019-2.178 3.996-5.233 3.992-8.846l-.501-.5zM2 6h2.643a23.828 23.828 0 0 0-2.225 2.71L2 8.294V6zm5.7 8l-.42-.423a23.59 23.59 0 0 0 2.715-2.216V14H7.7zm-1.143-1.144L3.136 9.437C4.128 8 8.379 2.355 13.978 2.016c-.326 5.612-5.987 9.853-7.421 10.84zM4 15v-1H2v-2H1v3h3zm6.748-7.667a1.5 1.5 0 1 0-2.496-1.666 1.5 1.5 0 0 0 2.495 1.666z"
-                                        />
-                                      </svg>
-                                    </button>
-                                    
-                                  </div>
+
                                 </div>
                               </div>
                             </div>
                           </>
+                          <button
+                            type="submit"
+                            className="focus:shadow-outline-blue inline-flex items-center justify-center px-3 py-2 w-full text-blue-700 text-sm cursor-pointer font-medium leading-4 bg-blue-100 active:bg-blue-200 hover:bg-blue-50 border focus:border-blue-300 border-transparent rounded-md focus:outline-none transition duration-150 ease-in-out disabled:opacity-50"
+                            aria-label="Login"
+                          >
+                            {" "}
+                            Deploy Token
+                            <svg
+                              stroke="currentColor"
+                              fill="currentColor"
+                              strokeWidth={0}
+                              viewBox="0 0 16 16"
+                              className="mr-2 w-6 h-6"
+                              height="1em"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M14.491 1c-3.598.004-6.654 1.983-8.835 4H1.5l-.5.5v3l.147.354.991.991.001.009 4 4 .009.001.999.999L7.5 15h3l.5-.5v-4.154c2.019-2.178 3.996-5.233 3.992-8.846l-.501-.5zM2 6h2.643a23.828 23.828 0 0 0-2.225 2.71L2 8.294V6zm5.7 8l-.42-.423a23.59 23.59 0 0 0 2.715-2.216V14H7.7zm-1.143-1.144L3.136 9.437C4.128 8 8.379 2.355 13.978 2.016c-.326 5.612-5.987 9.853-7.421 10.84zM4 15v-1H2v-2H1v3h3zm6.748-7.667a1.5 1.5 0 1 0-2.496-1.666 1.5 1.5 0 0 0 2.495 1.666z"
+                              />
+                            </svg>
+                          </button>
                         </>
                       </div>
                     </div>

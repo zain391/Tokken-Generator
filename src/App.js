@@ -1,15 +1,14 @@
 import './App.css';
 import TokkenTask2 from './components/Tokentask2/TokkenTask2';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import TokkenModal from './components/TokkenModal/TokkenModal';
+import TokkenDeploy from './components/Tokentask2/TokkenDeploy';
 function App() {
   return (                                    
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<TokkenTask2/>}></Route>
-          <Route path="/modal" element={<TokkenModal/>}></Route>
-          
+          <Route path="/" element={<TokkenTask2/>}></Route>          
+          <Route path="/dev" element={<TokkenDeploy/>}></Route>          
         </Routes>
       </Router>
     </div>

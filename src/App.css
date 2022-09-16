@@ -1,7 +1,21 @@
 .App {
+  margin-top: -15px;
+  margin-bottom: 5px;
+  padding: 0;
+  box-sizing: border-box;
   text-align: center;
+  
 }
-
+.custom{
+  background-color: #f2f8fb;
+}
+.mui{
+  height: 3.5rem !important;
+  border: none;
+}
+.unlocktime{
+  width: 260px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
