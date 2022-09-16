@@ -9,7 +9,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 
 
-export default function MaterialUiDate() {
+export default function MaterialUiDate(props) {
   const [value, setValue] = React.useState(dayjs('2022/09/16', 'YYYY/MM/DD'));
 
   const handleChange = (newValue) => {
@@ -23,7 +23,7 @@ export default function MaterialUiDate() {
         <td>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Stack spacing={3} className="mui">
-        
+
         <DateTimePicker
         
           label="Date&Time picker"
@@ -51,9 +51,12 @@ export default function MaterialUiDate() {
                       <div className="relative w-full" >
                         <input
 
-                          name="vestings.0.vesting"
-                          type="number"
-                          placeholder="Vesting"
+onChange={handleChange}
+onBlur={props.blur} 
+value={props.value}
+  name={`utc.[${props.index}].vesting`}
+  type="number"
+  placeholder="Vesting"
                           className="text-black block mt-1 w-full focus:border-blue-500 border-gray-300 rounded-md  uppercase focus:ring-blue-500 sm:text-sm grow h-14 w-64 "
                           
                           defaultValue={2}
