@@ -74,7 +74,7 @@ const TokkenTask2 = () => (
 
                   <TokenDecimal  Customdecimals={values.Customdecimals} decimals={values.decimals} change={handleChange} blur={handleBlur}/>
                   <TokenTge vestingLock={values.vestingLock} change={handleChange} blur={handleBlur}  date_Time={values.date_Time}/>
-                  <TokenDeployButton/>
+                  <TokenDeployButton submit={handleSubmit}/>
                 </div>
               </form>
             </main>
