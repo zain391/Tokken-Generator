@@ -1,4 +1,5 @@
 import React from "react";
+import TokkenModal from "../TokkenModal/TokkenModal";
 
 function ConnectWallet() {
   return (
@@ -14,9 +15,7 @@ function ConnectWallet() {
                   id="btn-connect"
                   color="white"
                 >
-                  <span className=" whitespace-nowrap  cursor-pointer focus:shadow-outline-blue inline-flex items-center justify-center px-3 py-2 w-full text-blue-700 text-sm font-medium leading-4 bg-blue-100 active:bg-blue-200 hover:bg-blue-50 border focus:border-blue-300 border-transparent rounded-md focus:outline-none transition duration-150 ease-in-out">
-                    Wallet Connect
-                  </span>
+                    <TokkenModal/>
                 </button>
               </div>
             </div>

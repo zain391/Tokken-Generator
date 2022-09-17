@@ -42,7 +42,7 @@ function SimpleDialog(props) {
 
           <ListItem button onClick={() => handleListItemClick(wallets)} key={wallets}>
             <ListItemAvatar>
-              <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
+              <Avatar sx={{ bgcolor: blue[200], color: blue[900] }}>
                 <img src={wallet} alt="wallet"></img>
               </Avatar>
             </ListItemAvatar>
