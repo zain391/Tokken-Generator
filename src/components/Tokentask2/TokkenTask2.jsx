@@ -32,7 +32,7 @@ const TokkenTask2 = () => (
         maximumSupply: 0,
         initialVesting: 0,
         decimals: 18,
-        date_Time: Date,
+        date_Time: "",
       }}
       validationSchema={Schema}
       onSubmit={(values, { setSubmitting }) =>
@@ -50,6 +50,8 @@ const TokkenTask2 = () => (
         handleBlur,
         handleSubmit,
         isSubmitting,
+        setFieldValue,
+        
       }) => (
         <Form>
           <div className="z-0 flex flex-col items-center w-full min-h-screen pb-16 lg:pb-0 ">
@@ -97,8 +99,7 @@ const TokkenTask2 = () => (
                   />
                   <TokenTge
                     vestingLock={values.vestingLock}
-                    change={handleChange}
-                    blur={handleBlur}
+                    setField={setFieldValue}
                     date_Time={values.date_Time}
                   />
                   <TokenDeployButton/>

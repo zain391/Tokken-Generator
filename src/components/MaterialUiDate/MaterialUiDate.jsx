@@ -6,11 +6,13 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
-export default function MaterialUiDate({change,blur, date_Time}) {
+export default function MaterialUiDate({setField, date_Time}) {
   const [value, setValue] = React.useState(dayjs(date_Time, "YYYY/MM/DD"));
 
-  const handleChange = (date_Time) => {
-    setValue(date_Time);
+  const handleChange = (value) => {
+    setValue(value);
+    // console.log(setField,"setField");
+    setField("date_Time",value)
     
   };
 
@@ -19,11 +21,11 @@ export default function MaterialUiDate({change,blur, date_Time}) {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Stack spacing={3} className="mui">
           <DateTimePicker
+          className="date_time"
             label="Date&Time picker"
-            value={date_Time}
+            value={value}
             name="date_Time"
             onChange={handleChange}
-            // onBlur={blur}
             renderInput={(params) => <TextField {...params} />}
           />
         </Stack>

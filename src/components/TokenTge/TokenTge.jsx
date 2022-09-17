@@ -1,11 +1,11 @@
 import React from 'react'
 import MaterialUiDate from '../MaterialUiDate/MaterialUiDate'
-function TokenTge({vestingLock,change,blur,date_Time}) {
+function TokenTge({vestingLock,date_Time,setField}) {
   return (
     <>
     {
             vestingLock ?(
-             <MaterialUiDate change={change} blur={blur} date_Time={date_Time}/>   
+             <MaterialUiDate setField={setField} date_Time={date_Time}/>   
 
             ):<></>
         } 
