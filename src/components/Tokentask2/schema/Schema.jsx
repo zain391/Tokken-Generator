@@ -17,7 +17,11 @@ export const Schema = Yup.object().shape({
   decimals: Yup.boolean(),
   vestingLock: Yup.boolean(),
   initialSupply: Yup.number().min(1).required("The token initial supply field is required"),
-  maximumSupply: Yup.number().min(1).required("The Maximum Supply should be equla or greater than  initial supply "),
+  // maximumSupply: Yup.number().max(100).oneOf([Yup.ref("initialSupply"), null], "The Maximum Supply should be equal or greater than  initial supply"),
+  maximumSupply: Yup.number().when("mintingBurningsupport",{
+    is:true,
+    then: Yup.number().Yup.min("initialSupply").required()
+  }),
   initialVesting: Yup.number(),
   decimals:Yup.number(),
   date_Time:Yup.date(),

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Formik, Form, Field, FieldArray } from "formik";
 import ConnectWallet from "../ConnectWallet/ConnectWallet";
 import { Footer } from "../Footer/Footer";
@@ -10,6 +10,7 @@ import TokenSupply from "../TokenSupply/TokenSupply";
 import TokenDeployButton from "../TokenDeployButton/TokenDeployButton";
 import { Schema } from "../Tokentask2/schema/Schema";
 import TokenTge from "../TokenTge/TokenTge";
+
 const TokkenTask2 = () => (
   <>
     <Formik
@@ -31,7 +32,7 @@ const TokkenTask2 = () => (
         maximumSupply: 0,
         initialVesting: 0,
         decimals: 18,
-        date_Time: "",
+        date_Time: Date,
       }}
       validationSchema={Schema}
       onSubmit={(values, { setSubmitting }) =>

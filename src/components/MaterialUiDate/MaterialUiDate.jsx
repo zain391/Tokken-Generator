@@ -7,10 +7,11 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
 export default function MaterialUiDate({change,blur, date_Time}) {
-  const [value, setValue] = React.useState(dayjs("2022/09/16", "YYYY/MM/DD"));
+  const [value, setValue] = React.useState(dayjs(date_Time, "YYYY/MM/DD"));
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
+  const handleChange = (date_Time) => {
+    setValue(date_Time);
+    
   };
 
   return (
@@ -21,8 +22,8 @@ export default function MaterialUiDate({change,blur, date_Time}) {
             label="Date&Time picker"
             value={date_Time}
             name="date_Time"
-            onChange={change}
-            onBlur={blur}
+            onChange={handleChange}
+            // onBlur={blur}
             renderInput={(params) => <TextField {...params} />}
           />
         </Stack>
