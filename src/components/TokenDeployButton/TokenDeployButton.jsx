@@ -1,8 +1,9 @@
 import React from "react";
 
-function TokenDeployButton({submit}) {
+function TokenDeployButton() {
+
   return (
-    <>
+    <>  	
       <div>
         <div className="max-w-3xl mx-auto bg-white overflow-hidden shadow rounded-xl overflow-hidden">
           <div className="p-4 border-b border-gray-200">
@@ -26,7 +27,8 @@ function TokenDeployButton({submit}) {
               <div className="flex col-span-2">
                 <div className="flex-grow flex-shrink-0">
                   <button
-                  onSubmit={submit}
+                  name="button"
+                 
                   type="submit"
                     className="focus:shadow-outline-blue inline-flex items-center justify-center px-3 py-2 w-full text-blue-700 text-sm cursor-pointer font-medium leading-4 bg-blue-100 active:bg-blue-200 hover:bg-blue-50 border focus:border-blue-300 border-transparent rounded-md focus:outline-none transition duration-150 ease-in-out disabled:opacity-50"
                     aria-label="Login"

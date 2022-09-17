@@ -13,38 +13,43 @@ import TokenTge from "../TokenTge/TokenTge";
 const TokkenTask2 = () => (
   <>
     <Formik
-      initialValues={{ utc: [
-        {
-          unlockTime: "",
-          vesting: 0,
-        },
-      ] ,
-      tokenName:"",
-      tokenSymbol: "",
-      allFunctionality: true,
-      mintingBurningsupport: false,
-      unlimitedSupply: false,
-      Customdecimals: false,
-      vestingLock: false,
-      initialSupply: 0,
-      maximumSupply: 0,
-      initialVesting: 0,
-      decimals:18,
-      date_Time:"",
-    }}
-    validationSchema={Schema}
-      onSubmit={(values) =>
+      initialValues={{
+        utc: [
+          {
+            unlockTime: "",
+            vesting: 0,
+          },
+        ],
+        tokenName: "",
+        tokenSymbol: "",
+        allFunctionality: true,
+        mintingBurningsupport: false,
+        unlimitedSupply: false,
+        Customdecimals: false,
+        vestingLock: false,
+        initialSupply: 0,
+        maximumSupply: 0,
+        initialVesting: 0,
+        decimals: 18,
+        date_Time: "",
+      }}
+      validationSchema={Schema}
+      onSubmit={(values, { setSubmitting }) =>
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
+          console.log("i am working well");
+          setSubmitting(false);
         }, 500)
       }
-      render={({ values,
+      render={({
+        values,
         errors,
         touched,
         handleChange,
         handleBlur,
         handleSubmit,
-        isSubmitting, }) => (
+        isSubmitting,
+      }) => (
         <Form>
           <div className="z-0 flex flex-col items-center w-full min-h-screen pb-16 lg:pb-0 ">
             <Header />
@@ -52,7 +57,7 @@ const TokkenTask2 = () => (
               className="flex flex-col items-center justify-start flex-grow w-full h-full text-white "
               style={{ height: "max-content" }}
             >
-              <form noValidate className="my-5">
+              <>
                 <div className="grid gap-4 grid-cols-1 mt-4">
                   <div className="px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
                     <div className="text-center">
@@ -66,17 +71,41 @@ const TokkenTask2 = () => (
                     </div>
                   </div>
                   <ConnectWallet />
-                  <TokenInformation value={values.tokenName}/>
+                  <TokenInformation value={values.tokenName} />
 
-                  <TokenFeature change={handleChange} blur={handleBlur} mintingBurningsupport={values.mintingBurningsupport} unlimitedSupply={values.unlimitedSupply } decimals={values.decimals} Customdecimals={values.Customdecimals}/>
+                  <TokenFeature
+                    change={handleChange}
+                    blur={handleBlur}
+                    mintingBurningsupport={values.mintingBurningsupport}
+                    unlimitedSupply={values.unlimitedSupply}
+                    decimals={values.decimals}
+                    Customdecimals={values.Customdecimals}
+                  />
 
-                  <TokenSupply mintingBurningsupport={values.mintingBurningsupport} maximumSupply={values.maximumSupply} initialSupply={values.initialSupply}/>
+                  <TokenSupply
+                    mintingBurningsupport={values.mintingBurningsupport}
+                    maximumSupply={values.maximumSupply}
+                    initialSupply={values.initialSupply}
+                  />
 
-                  <TokenDecimal  Customdecimals={values.Customdecimals} decimals={values.decimals} change={handleChange} blur={handleBlur}/>
-                  <TokenTge vestingLock={values.vestingLock} change={handleChange} blur={handleBlur}  date_Time={values.date_Time}/>
-                  <TokenDeployButton submit={handleSubmit}/>
+                  <TokenDecimal
+                    Customdecimals={values.Customdecimals}
+                    decimals={values.decimals}
+                    change={handleChange}
+                    blur={handleBlur}
+                  />
+                  <TokenTge
+                    vestingLock={values.vestingLock}
+                    change={handleChange}
+                    blur={handleBlur}
+                    date_Time={values.date_Time}
+                  />
+                  <TokenDeployButton/>
+                  <>
+                    
+                  </>
                 </div>
-              </form>
+              </>
             </main>
             <span />
             <Footer />
