@@ -104,9 +104,7 @@ const TokkenTask2 = () => (
                     values={values}
                   />
                   <TokenDeployButton/>
-                  <>
-                    
-                  </>
+                  
                 </div>
               </>
             </main>

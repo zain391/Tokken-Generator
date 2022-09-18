@@ -8,20 +8,16 @@ function TokenSupply({ mintingBurningsupport }) {
           <div className="flex ">
             <br />
             <h3
-              className="text-gray-900 text-lg font-medium "
-              style={{ position: "absolute", left: "320px" }}
+              className="text-gray-900 text-lg font-medium ml-4"
             >
               Token Supply
+              <br />
               <span
-                className="text-gray-400 text-xs pb-8"
-                style={{
-                  position: "absolute",
-                  top: "29px",
-                  left: "-12px",
-                  width: "250px",
-                }}
+                className="text-gray-400 text-xs pb-8 mt-8 w-94 ml-0 mt-8"
               >
                 Let's set the supply options for your token
+                <hr />
+                
               </span>
             </h3>
 

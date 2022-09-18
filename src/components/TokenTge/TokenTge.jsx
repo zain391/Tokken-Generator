@@ -1,14 +1,15 @@
 import React from "react";
 import MaterialUiDate from "../MaterialUiDate/MaterialUiDate";
 import { Formik, Form, Field, FieldArray } from "formik";
-const stylePara="text-[#7E88C3] pt-4 font-medium text-base leading-6 font-sans";
-function TokenTge({ vestingLock ,values}) {
+const stylePara =
+  "text-[#7E88C3] pt-4 font-medium text-base leading-6 font-sans";
+function TokenTge({ vestingLock, values }) {
   return (
     <>
-      <div className="max-w-3xl w-full mx-auto bg-white mt-10 shadow rounded-xl overflow-hidden p-3">
-        {vestingLock ? (
-          <>
-            <div>
+      {vestingLock ? (
+        <>
+          <div className="max-w-3xl w-full mx-auto bg-white mt-10 shadow rounded-xl overflow-hidden p-3">\
+          <div>
               <label
                 htmlFor="supply_initial"
                 className="block text-gray-700 text-sm font-medium"
@@ -91,11 +92,11 @@ function TokenTge({ vestingLock ,values}) {
                 </div>
               )}
             </FieldArray>
-          </>
-        ) : (
-          <p></p>
-        )}
-      </div>
+          </div>
+        </>
+      ) : (
+        <p></p>
+      )}
     </>
   );
 }
