@@ -5,10 +5,7 @@ import TextField from "@mui/material/TextField";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import { height } from "@mui/system";
-import { sizing } from '@mui/system';
-
-
+import { ErrorMessage} from "formik";
 export default function MaterialUiDate({setField, date_Time}) {
   const [value, setValue] = React.useState(dayjs(date_Time, "YYYY/MM/DD"));
 
@@ -32,6 +29,9 @@ export default function MaterialUiDate({setField, date_Time}) {
             renderInput={(params) => <TextField   {...params}  />}
           />
         </Stack>
+        <p className="text-red-500 text-xs">
+                          <ErrorMessage name="date_Time" component="div" />
+                        </p>
       </LocalizationProvider>
 
       

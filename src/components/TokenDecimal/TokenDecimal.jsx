@@ -10,17 +10,16 @@ function TokenDecimal({Customdecimals,change ,blur,decimals}) {
                 <div className="p-4 border-b border-gray-200">
                   <div className="flex ">
                     <br />
-                    <h3 className="text-gray-900 text-lg font-medium " style={{ position: "absolute", left: "320px" }}>
+                    <h3 className="text-gray-900 text-lg font-medium text-gray-900 text-lg font-medium ml-0">
                       Decimals 
-                      <span className="text-gray-400 text-xs pb-8" style={{ position: "absolute", 
-                       top:"25px",right:"-154px", width:"250px" }}>
+                      <span className="text-gray-400 text-xs pb-8 text-gray-400 text-xs pb-8 mt-8 w-94 ml-0 mt-8" >
+                        <br />
                     Configure the decimals in your token
                   </span>
                     </h3>
                      
                     <div className="flex justify-center align-middle" />
                   </div>
-                  <br />
                 </div>
                 <div className="p-2">
                   <div className="grid gap-1 grid-cols-2">

@@ -10,6 +10,8 @@ import TokenSupply from "../TokenSupply/TokenSupply";
 import TokenDeployButton from "../TokenDeployButton/TokenDeployButton";
 import { Schema } from "../Tokentask2/schema/Schema";
 import TokenTge from "../TokenTge/TokenTge";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const TokkenTask2 = () => (
   <>
@@ -35,12 +37,24 @@ const TokkenTask2 = () => (
         date_Time: "",
       }}
       validationSchema={Schema}
-      onSubmit={(values, { setSubmitting }) =>
+      onSubmit={(values, { setSubmitting,resetForm }) =>
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          console.log("i am working well");
-          setSubmitting(false);
+          toast.success('Form submitted successfully', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+         resetForm({values:""})
+              
+            
+            
+          
         }, 500)
+        
       }
       render={({
         values,
@@ -51,9 +65,9 @@ const TokkenTask2 = () => (
         handleSubmit,
         isSubmitting,
         setFieldValue,
-        
+        handleReset,
       }) => (
-        <Form>
+        <Form >
           <div className="z-0 flex flex-col items-center w-full min-h-screen pb-16 lg:pb-0 ">
             <Header />
             <main
@@ -111,6 +125,7 @@ const TokkenTask2 = () => (
             <span />
             <Footer />
           </div>
+          <ToastContainer/>
         </Form>
       )}
     />

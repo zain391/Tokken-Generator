@@ -3,7 +3,7 @@ import MaterialUiDate from "../MaterialUiDate/MaterialUiDate";
 import { Formik, Form, Field, FieldArray } from "formik";
 const stylePara =
   "text-[#7E88C3] pt-4 font-medium text-base leading-6 font-sans";
-function TokenTge({ vestingLock, values }) {
+function TokenTge({ vestingLock, values,date_Time,setField }) {
   return (
     <>
       {vestingLock ? (
@@ -45,7 +45,7 @@ function TokenTge({ vestingLock, values }) {
                       >
                         <div className="flex flex-col col-span-2 justify-center items-center">
                           <p className={`${stylePara}  mr-4`}>Unlock Time</p>
-                          <MaterialUiDate />
+                          <MaterialUiDate date_Time={date_Time} setField={setField}/>
                         </div>
                         <div className="col-span-2">
                           <p className={`${stylePara}  ml-4 w-12`}>Vesting</p>

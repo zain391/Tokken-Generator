@@ -21,8 +21,8 @@ export const Schema = Yup.object().shape({
       is:true,
       then: Yup.number().min(Yup.ref("initialSupply")).required()
     }),
-    initialVesting: Yup.number(),
-    decimals:Yup.number(),
-    date_Time:Yup.date(),
+    initialVesting: Yup.number().required(),
+    decimals:Yup.number().required(),
+    date_Time:Yup.date().min(new Date()).required(),
   });
 

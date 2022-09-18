@@ -56,10 +56,9 @@ function TokenSupply({ mintingBurningsupport }) {
             <div>
               <div className="max-w-3xl mx-auto bg-white overflow-hidden shadow rounded-xl overflow-hidden">
                 <div className="flex ">
-                  <br />
                   <h3
-                    className="text-gray-900 text-lg font-medium "
-                    style={{ position: "absolute", left: "320px" }}
+                    className="text-gray-900 text-lg font-medium text-gray-900 text-lg font-medium ml-4"
+                    
                   >
                     Maximum Supply
                   </h3>
