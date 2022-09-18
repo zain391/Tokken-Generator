@@ -101,6 +101,7 @@ const TokkenTask2 = () => (
                     vestingLock={values.vestingLock}
                     setField={setFieldValue}
                     date_Time={values.date_Time}
+                    values={values}
                   />
                   <TokenDeployButton/>
                   <>
