@@ -18,15 +18,15 @@ export default function MaterialUiDate({setField, date_Time}) {
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}  sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        '& .MuiTextField-root': { m: 1, width: '25ch',  },
       }}>
         <Stack spacing={3} className="mui">
           <DateTimePicker
-          
+
             value={value}
             name="date_Time"
             onChange={handleChange}
-            renderInput={(params) => <TextField   {...params}  />}
+            renderInput={(params) => <TextField    {...params} />}
           />
         </Stack>
         <p className="text-red-500 text-xs">

@@ -76,7 +76,6 @@ function TokenTge({ vestingLock, values,date_Time,setField }) {
                     ) : (
                       <div className="py-5 pl=2 text-red-500 flex justify-start w-94 text-xs">
                         The Sum of TGE and Vestings should be equal to 100%
-                        Currently it is exceding 100%
                       </div>
                     )}
                     <div className="flex justify-center">

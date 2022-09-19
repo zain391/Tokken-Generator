@@ -30,7 +30,10 @@ function TokenFeature({blur,change,unlimitedSupply,mintingBurningsupport,Customd
                 </div>
                 <div>
                   <label className="inline-flex relative items-center cursor-pointer">
-                    <Field
+                    <input
+                    onChange={change}
+                    onBlur={blur}
+                    checked={true}
                       name="allFunctionality"
                       type="checkbox"
                       id="checked-toggle"
